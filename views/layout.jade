@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    title= title
+    
+    //- bower:css
+    link(rel='stylesheet', href='/res/bootstrap/dist/css/bootstrap.css')
+    link(rel='stylesheet', href='/res/font-awesome/css/font-awesome.min.css')
+    //- endbower
+    
+    //- inject:css
+    link(rel="stylesheet", href="/stylesheets/style.css")
+    //- endinject
+  body(ng-app='taskManager')
+    block content
+    
+    //- bower:js
+    script(src='/res/jquery/dist/jquery.js')
+    script(src='/res/angular/angular.js')
+    script(src='/res/bootstrap/dist/js/bootstrap.js')
+    //- endbower
+    
+    //- inject:js
+
+    script(src="/javascripts/app.js")
+
+    script(src="/javascripts/task.js")
+
+    script(src="/javascripts/taskController.js")
+
+    //- endinject

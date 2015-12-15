@@ -1,0 +1,27 @@
+extends layout
+
+//- bower:js
+script(src='/res/jquery/dist/jquery.js')
+script(src='/res/angular/angular.js')
+script(src='/res/bootstrap/dist/js/bootstrap.js')
+//- endbower
+
+//- inject:js
+script(src="/javascripts/app.js")
+script(src="/javascripts/task.js")
+script(src="/javascripts/taskController.js")
+//- endinject
+block content
+    #container(ng-controller='taskCtrl as ctrl')
+        h1 TaskManager
+        p 
+        form(id='newTask', ng-submit='ctrl.createTask()')
+            input(ng-model='ctrl.newTask.name' placeholder='New Task?' id='newTaskItem')
+        
+        #container(ng-repeat='task in ctrl.tasks')
+            input(type='checkbox' ng-checked='task.completed' ng-click='ctrl.checked($index)')
+            span(ng-click='ctrl.edit($index)')
+                {{task.name}}
+            
+            #container(ng-show="ctrl.editing($index)") Description: 
+                input(ng-model='ctrl.newTask.assignedTo' placeholder='' id='assignedTo')
